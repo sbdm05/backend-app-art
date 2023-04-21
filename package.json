@@ -1,0 +1,18 @@
+{
+  "name": "flash-cards",
+  "version": "1.0.0",
+  "description": "Backend using Ai to generate flashcards",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "nodemon": "nodemon app.js",
+    "start": "node app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "nodemon": "^2.0.22",
+    "openai": "^3.2.1"
+  }
+}
