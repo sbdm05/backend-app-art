@@ -3,7 +3,7 @@ const router = express.Router();
 
 const { getQuestions } = require('../controllers/flash.js');
 
-router.get('/', getQuestions);
+router.post('', getQuestions);
 
 
 module.exports = router;
