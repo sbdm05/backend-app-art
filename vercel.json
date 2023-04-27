@@ -1,8 +1,6 @@
 {
   "routes": [{ "src": "/api/(.*)", "dest": "/app.js" }],
   "functions": {
-  " src ": { "src": "app.js"},
-   "use" : { "use": "@vercel/node"},
     "/api/(.*)": {
       "maxDuration": 60
     }
