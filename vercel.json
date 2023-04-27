@@ -1,5 +1,5 @@
 {
-  "routes": [{ "src": "/api/(.*)", "dest": "/app.js" }],
+  "routes": [{ "src": "api/(.*)", "dest": "app.js" }],
   "functions": {
     "/api/(.*)": {
       "maxDuration": 60
