@@ -1,7 +1,6 @@
 {
   "functions": {
     "api/*": {
-      "handler": "app.js",
       "runtime": "@vercel/node",
       "memory": 512,
       "maxDuration": 60
