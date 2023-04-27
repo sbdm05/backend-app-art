@@ -1,6 +1,6 @@
 {
   "functions": {
-    "api/*": {
+    "api/v1/flash-cards": {
       "maxDuration": 60
     }
   }
