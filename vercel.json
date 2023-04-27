@@ -1,9 +1,6 @@
 {
   "functions": {
     "api/*": {
-    "entrypoint": "app.js",
-      "runtime": "@vercel/node",
-      "memory": 512,
       "maxDuration": 60
     }
   }
