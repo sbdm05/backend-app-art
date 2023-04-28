@@ -15,7 +15,7 @@ const getQuestions = async (req, res) => {
   const messages = [...body]
   //   let messages = [{ "role": "system", "content": "tell me a joke" }];
     const chatGPT = await openai.createChatCompletion({
-      model: 'text-davinci-003',
+      model: 'gpt-3.5-turbo',
       messages,
     });
 
