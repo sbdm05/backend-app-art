@@ -11,12 +11,14 @@ let tempArray = [];
 const openai = new OpenAIApi(configuration);
 
 const getQuestions = async (req, res) => {
+  const { body } = req;
+  const messages = [...body];
+  
   try {
     const chatGPT = await openai.createCompletion(
       {
-        model: 'text-davinci-002',
-        prompt: 'It was the best of times',
-        max_tokens: 100,
+        model: 'gpt-3.5-turbo',
+        messages,
         temperature: 0,
         stream: true,
       },
