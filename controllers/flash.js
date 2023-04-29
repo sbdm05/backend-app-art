@@ -19,11 +19,24 @@ const getQuestions = async (req, res) => {
   // res.json({msg : body})
   const messages = [...body];
   //   let messages = [{ "role": "system", "content": "tell me a joke" }];
-  const chatGPT = await openai.createChatCompletion({
-    model: 'gpt-3.5-turbo',
-    stream: true,
-    messages,
-  });
+  // const chatGPT = await openai.createChatCompletion({
+  //   model: 'gpt-3.5-turbo',
+  //   stream: true,
+  //   messages,
+  // });
+    const payload = {
+      model: 'text-davinci-003',
+      messages,
+      temperature: 0.7,
+      top_p: 1,
+      frequency_penalty: 0,
+      presence_penalty: 0,
+      max_tokens: 200,
+      stream: true,
+      n: 1,
+    };
+
+
 
   // const chatGPTMessage = chatGPT.data.choices[0].message;
 
