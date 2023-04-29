@@ -1,5 +1,3 @@
-
-
 const { request } = require('express');
 const { Configuration, OpenAIApi } = require('openai');
 require('dotenv').config();
@@ -18,8 +16,7 @@ const getQuestions = async (req, res) => {
   //   let messages = [{ "role": "system", "content": "tell me a joke" }];
     const chatGPT = await openai.createChatCompletion({
       model: 'gpt-3.5-turbo',
-      messages,
-      stream: true,
+      messages
     });
 
     const chatGPTMessage = chatGPT.data.choices[0].message;
