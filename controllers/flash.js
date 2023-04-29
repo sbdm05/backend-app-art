@@ -25,7 +25,7 @@ const getQuestions = async (req, res) => {
   //   messages,
   // });
     const payload = {
-      model: 'text-davinci-003',
+      model: 'gpt-3.5-turbo',
       messages,
       temperature: 0.7,
       top_p: 1,
