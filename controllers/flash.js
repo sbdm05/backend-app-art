@@ -27,6 +27,25 @@ const getQuestions = async (req, res) => {
  
 };
 
+const onPrompt = async (req, res) => {
+  const { body } = req;
+  console.log(body);
+  // res.json({msg : body})
+  const messages = [...body];
+  //   let messages = [{ "role": "system", "content": "tell me a joke" }];
+  const chatGPT = await openai.createChatCompletion({
+    model: 'gpt-3.5-turbo',
+    messages,
+  });
+
+  const chatGPTMessage = chatGPT.data.choices[0].message;
+
+  console.log(chatGPTMessage);
+
+  res.json({ msg: 'déclenché', chatGPTMessage: chatGPTMessage });
+};
+
 module.exports = {
   getQuestions,
+  onPrompt
 };
