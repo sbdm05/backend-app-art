@@ -134,23 +134,29 @@ const getQuestions = async (req, res) => {
 };
 
 const onPrompt = async (req, res) => {
-  const { body } = req;
-  console.log(body);
-  // res.json({msg : body})
-  const messages = [...body];
-  //messages = [{ "role": "system", "content": "tell me a joke" }];
-  const chatGPT = await openai.createChatCompletion({
-    model: 'gpt-3.5-turbo',
-    messages,
-    max_tokens: 100,
-    timeout: 8000,
-  });
+  try {
+    const messages = req.body;
 
-  const chatGPTMessage = chatGPT.data.choices[0].message;
+    if (!Array.isArray(messages) || messages.length === 0) {
+      return res.status(400).json({ error: 'Invalid message format' });
+    }
 
-  console.log(chatGPTMessage);
+    const chatGPT = await openai.createChatCompletion({
+      model: 'gpt-3.5-turbo',
+      messages,
+      max_tokens: 200, // Limite la réponse pour éviter les timeouts
+    });
 
-  res.json({ msg: 'déclenché', chatGPTMessage: chatGPTMessage });
+    const chatGPTMessage = chatGPT.data.choices[0].message;
+    console.log('Réponse OpenAI :', chatGPTMessage);
+
+    return res.json({ chatGPTMessage });
+  } catch (error) {
+    console.error('Erreur OpenAI :', error);
+    return res
+      .status(500)
+      .json({ error: 'OpenAI API failed', details: error.message });
+  }
 };
 
 module.exports = {
