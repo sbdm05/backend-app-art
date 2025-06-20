@@ -141,16 +141,19 @@ const onPrompt = async (req, res) => {
       return res.status(400).json({ error: 'Invalid message format' });
     }
 
-    const chatGPT = await openai.createChatCompletion({
-      model: 'gpt-3.5-turbo',
-      messages,
-      max_tokens: 200, // Limite la réponse pour éviter les timeouts
-    });
+    // Version test simple pour vérifier que ça répond vite
+    return res.json({ msg: 'test de réponse backend OK' });
 
-    const chatGPTMessage = chatGPT.data.choices[0].message;
-    console.log('Réponse OpenAI :', chatGPTMessage);
+    // const chatGPT = await openai.createChatCompletion({
+    //   model: 'gpt-3.5-turbo',
+    //   messages,
+    //   max_tokens: 200, // Limite la réponse pour éviter les timeouts
+    // });
 
-    return res.json({ chatGPTMessage });
+    // const chatGPTMessage = chatGPT.data.choices[0].message;
+    // console.log('Réponse OpenAI :', chatGPTMessage);
+
+    // return res.json({ chatGPTMessage });
   } catch (error) {
     console.error('Erreur OpenAI :', error);
     return res
