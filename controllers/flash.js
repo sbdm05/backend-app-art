@@ -9,7 +9,7 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 const getQuestions = async (req, res) => {
-  const {body} = req
+  const { body } = req;
   console.log(body, 'body');
   const messages2 = body.message;
   console.log(messages2, 'messages');
@@ -26,7 +26,6 @@ const getQuestions = async (req, res) => {
     //   },
     //   { responseType: 'stream' }
     // );
-
 
     const chatGPT = await openai.createCompletion(
       {
@@ -143,6 +142,8 @@ const onPrompt = async (req, res) => {
   const chatGPT = await openai.createChatCompletion({
     model: 'gpt-3.5-turbo',
     messages,
+    max_tokens: 100,
+    timeout: 8000,
   });
 
   const chatGPTMessage = chatGPT.data.choices[0].message;
