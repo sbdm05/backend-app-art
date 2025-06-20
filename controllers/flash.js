@@ -17,6 +17,17 @@ const getQuestions = async (req, res) => {
   let messages = [{ role: 'system', content: 'tell me a joke' }];
 
   try {
+    // const chatGPT = await openai.createCompletion(
+    //   {
+    //     model: 'text-davinci-002',
+    //     prompt: messages2,
+    //     stream: true,
+    //     max_tokens: 1000,
+    //   },
+    //   { responseType: 'stream' }
+    // );
+
+
     const chatGPT = await openai.createCompletion(
       {
         model: 'text-davinci-002',
@@ -26,7 +37,6 @@ const getQuestions = async (req, res) => {
       },
       { responseType: 'stream' }
     );
-
     // chatGPT.data.on('data', (data) => {
     //   console.log(data, 'data')
 
@@ -129,7 +139,7 @@ const onPrompt = async (req, res) => {
   console.log(body);
   // res.json({msg : body})
   const messages = [...body];
-  //   let messages = [{ "role": "system", "content": "tell me a joke" }];
+  //messages = [{ "role": "system", "content": "tell me a joke" }];
   const chatGPT = await openai.createChatCompletion({
     model: 'gpt-3.5-turbo',
     messages,
