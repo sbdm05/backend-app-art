@@ -142,7 +142,7 @@ const onPrompt = async (req, res) => {
     }
 
     // Version test simple pour vérifier que ça répond vite
-    return res.json({ msg: 'test de réponse backend OK' });
+    return res.json({ msg: 'test de réponse backend OK, fonctionne' });
 
     // const chatGPT = await openai.createChatCompletion({
     //   model: 'gpt-3.5-turbo',
